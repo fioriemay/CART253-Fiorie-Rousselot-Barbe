@@ -1,6 +1,6 @@
 /**
- * Title of Project
- * Author Name
+ * Week Two Exercise
+ * Fiorie Rousselot-Barbe
  * 
  * This is a template. You must fill in the title, author, 
  * and this description to match your project!
@@ -20,8 +20,11 @@ function preload() {
  * Description of setup
 */
 function setup() {
-    createCanvas(480, 480);
-    background(255, 0, 0);
+    createCanvas(500, 500);
+    background(200, 200, 200);
+    point(50, 50);
+    rect(0, 0, 250, 250);
+    line(0, 0, 500, 500);
 }
 
 
