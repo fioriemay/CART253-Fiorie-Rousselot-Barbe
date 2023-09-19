@@ -21,7 +21,7 @@ function preload() {
 */
 function setup() {
 
-    createCanvas(600, 600);
+    createCanvas(500, 500);
 }
 
 
@@ -29,6 +29,9 @@ function setup() {
  * Description of draw()
 */
 function draw() {
-    rectMode(CENTER);
-    rect(250,250,100,100);
+    background(0);
+  ellipse(250,250,300,300);
+  ellipse(200,200,50,50);
+  ellipse(300,200,50,50);
+  ellipse(250,300,100,100);
 }
