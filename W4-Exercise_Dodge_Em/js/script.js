@@ -3,7 +3,7 @@ let img;
 
 function preload(){
 
-  img = loadImage ('assets/images/cat.png')
+  img = loadImage ('https://raw.githubusercontent.com/fioriemay/CART253-Fiorie-Rousselot-Barbe/main/W4-Exercise_Dodge_Em/assets/images/cat.png');
 }
 
 function setup(){
