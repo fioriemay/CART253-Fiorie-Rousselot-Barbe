@@ -25,6 +25,15 @@ let covid19 = {
 
 }
 
+let user = {
+
+x: 250,
+y: 250,
+size: 100,
+fill: 255,
+
+
+}
 
 /**
  * Description of preload
@@ -52,12 +61,42 @@ function setup() {
 function draw() {
   background(0);
 
+  // static background
+  for (let i = 0; i < 275; i++){
+    let x = random(0, width);
+    let y = random (0, height);
+    stroke(255);
+    point (x,y);
+
+  }
+
+  
+
+
   covid19.x = covid19.x + covid19.vx;
   covid19.y = covid19.y + covid19.vy;
 
-  fill(covid19.fill.r, covid19.fill.g, covid19.fill.b);
+    if(covid19.x > width){
 
+      covid19.x = 0;
+      covid19.y = random(0, height);
+    }
+
+    user.x = mouseX;
+    user.y = mouseY;
+    
+    let d = dist(user.x, user.y, covid19.x, covid19.y);
+
+    if (d < covid19.size/2 + user.size/2){
+
+      noLoop();
+
+    }
+noStroke();
+  fill(covid19.fill.r, covid19.fill.g, covid19.fill.b);
   ellipse(covid19.x, covid19.y, covid19.size);
 
-  //CONTINUE AT 15:40
+  fill(user.fill);
+  ellipse(user.x, user.y, user.size);
+
 }
