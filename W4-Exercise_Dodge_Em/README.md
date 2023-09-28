@@ -1,3 +1,4 @@
-# Template p5 project
+# Week 4 Exercise - Dodge Em
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+In this simple game you play as a cat avoiding a ball of yarn (purple circle)
+
