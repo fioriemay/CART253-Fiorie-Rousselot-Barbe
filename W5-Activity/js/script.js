@@ -6,27 +6,40 @@
  * and this description to match your project!
  */
 
-"use strict";
+let circle1 = {
 
-/**
- * Description of preload
-*/
-function preload() {
+    x: 150,
+    y: 250,
+    size: 100,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+
 
 }
 
+let circle2 = {
 
-/**
- * Description of setup
-*/
+    x: 350,
+    y: 250,
+    size: 100,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+    
+
+}
+
 function setup() {
 
+createCanvas(500, 500);
+circle1.x = width/3;
+circle2.x= 2*width/3;
+
 }
 
 
-/**
- * Description of draw()
-*/
+
 function draw() {
 
 }
