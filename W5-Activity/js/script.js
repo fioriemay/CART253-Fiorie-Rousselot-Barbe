@@ -6,7 +6,7 @@
  * and this description to match your project!
  */
 
-// CONTINUE AT 27:00 !!!!!!!!!!!!!!!!!!!!!!!!!!
+
 let circle1 = {
 
     x: undefined,
@@ -30,6 +30,8 @@ let circle2 = {
     
 
 }
+
+let state = 'title'; // can be : title, simulation, love or sadness.
 
 function setup() {
 
@@ -61,7 +63,42 @@ function draw() {
     //black background
     background (0);
     
-    simulation();
+    if(state === 'title'){
+
+        title();
+
+    }
+
+    else if (state === 'simulation'){
+
+        simulation();
+
+    }
+
+    else if (state === 'love'){
+
+       love();
+
+    }
+
+    else if (state === 'sadness'){
+
+        
+
+    }
+
+    
+
+}
+
+function title(){
+
+    push();
+    textSize(64);
+    fill(200, 100, 100);
+    textAlign(CENTER, CENTER);
+    text('LOVE?', width/2, height/2);
+    pop();
 
 }
 
@@ -71,6 +108,28 @@ function simulation(){
    checkOffScreen();
    checkOverlap();
    display();
+}
+
+function love(){
+
+    push();
+    textSize(64);
+    fill(255, 150, 150);
+    textAlign(CENTER, CENTER);
+    text('LOVE!', width/2, height/2);
+    pop();
+
+}
+
+function sadness(){
+
+    push();
+    textSize(64);
+    fill(150, 150, 255);
+    textAlign(CENTER, CENTER);
+    text(':((', width/2, height/2);
+    pop();
+
 }
 
 function move(){
@@ -98,7 +157,7 @@ function checkOverlap(){
     let d = dist(circle1.x, circle1.y, circle2.x, circle2.y);
     if (d < circle1.size/2 + circle2.size/2){
 
-        // love ending
+        state ='love';
 
     }
 
@@ -109,4 +168,14 @@ function display(){
     // display circles
     ellipse(circle1.x, circle1.y, circle1.size);
     ellipse(circle2.x, circle1.y, circle2.size);
+}
+
+function mousePressed(){
+
+    if (state === 'title') {
+
+        state = 'simulation';
+
+    }
+
 }
