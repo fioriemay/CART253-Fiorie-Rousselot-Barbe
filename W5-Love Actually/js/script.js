@@ -20,6 +20,7 @@ let circle1 = {
 
 }
 
+//second circle
 let circle2 = {
 
     x: undefined,
@@ -34,6 +35,7 @@ let circle2 = {
 
 }
 
+//we start our simulation at the title screen
 let state = 'title'; // can be : title, simulation, love or sadness.
 
 
@@ -43,6 +45,8 @@ function setup() {
 
 //project canvas
 createCanvas(500, 500);
+
+//refers to setting up our circle dimensions
 setupCircles();
 
 }
@@ -55,7 +59,7 @@ function setupCircles(){
 circle1.x = width/3;
 circle2.x= 2*width/3;
 
-//circle movement
+//circle movement (original version)
 circle1.vx = random(-circle1.speed, circle1.speed);
 circle1.vy = random(-circle1.speed, circle1.speed);
 
@@ -71,6 +75,7 @@ function draw() {
     //black background
     background (0);
     
+    //checking the state to see which function to go to.
     if(state === 'title'){
 
         title();
@@ -95,12 +100,18 @@ function draw() {
 
     }
 
+    else if(state === 'happyAlone'){
+
+        happyAlone();
+    }
+
     
 
 }
 
 function title(){
 
+    //title consists of text
     push();
     textSize(64);
     fill(200, 100, 100);
@@ -117,7 +128,7 @@ function simulation(){
    checkOverlap();
    display();
 
-   //debug used, displays circle coordinates
+   //!!!debug used, displays circle coordinates if uncommented!!!!
    /* push();
    fill(255,100,100);
    pop();
@@ -157,6 +168,17 @@ function sadness(){
 
 }
 
+function happyAlone(){
+   
+    push();
+    textSize(25);
+    fill(255, 150, 200);
+    textAlign(CENTER, CENTER);
+    text('you didnt need them after all!', width/2, height/2);
+    pop();
+
+}
+
 function move(){
 
 
@@ -164,6 +186,7 @@ function move(){
     circle2.x = circle2.x + circle2.vx;
     circle2.y = circle2.y + circle2.vy;*/
 
+        //using perlin noise to have the non-user circle move around
     circle2.tx = circle2.tx + 0.025;
     circle2.ty = circle2.ty + 0.025;
     
@@ -176,6 +199,7 @@ function move(){
     circle2.x = circle2.x + circle2.vx;
     circle2.y = circle2.y + circle2.vy;
 
+        // our user circle follows the mouse x and y position
     if (mouseX > circle1.x){
   
         circle1.vx = 2;
@@ -229,6 +253,7 @@ function checkOverlap(){
 
 }
 
+// interactive pink background using perlin noise, follows mouse position
 function pinkNoise(){
 
     let noiseSize=0.015
@@ -256,5 +281,15 @@ function mousePressed(){
         state = 'simulation';
 
     }
+
+}
+
+// if we press the key A, we display a new semi-hidden ending
+function keyPressed(){
+
+if(key === 'a'){
+
+    state = 'happyAlone';
+}
 
 }
