@@ -110,7 +110,8 @@ function simulation(){
    checkOverlap();
    display();
 
-    push();
+   //debug used, displays circle coordinates
+   /* push();
    fill(255,100,100);
    pop();
    text(circle1.x, circle1.x, circle1.y);
@@ -121,7 +122,7 @@ function simulation(){
    pop();
    text(circle2.x, circle2.x, circle2.y);
    text(circle2.y, circle2.x, circle2.y +10);
-
+*/
    pinkNoise();
 
 
@@ -220,8 +221,8 @@ function pinkNoise(){
     for(let i=0; i < width*4.5; i++){
     let noiseNum = noise((mouseX + i)*noiseSize, mouseY*noiseSize);
 
-    stroke(noiseNum*255);
-    line(i, mouseY+noiseNum*200, isSecureContext, height);
+    stroke(250,122,199, 100);
+    line(i, mouseY+noiseNum*200, i, height);
 
 }
 
