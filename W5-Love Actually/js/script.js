@@ -110,6 +110,20 @@ function simulation(){
    checkOverlap();
    display();
 
+    push();
+   fill(255,100,100);
+   pop();
+   text(circle1.x, circle1.x, circle1.y);
+   text(circle1.y, circle1.x, circle1.y +10);
+
+   push();
+   fill(255,100,100);
+   pop();
+   text(circle2.x, circle2.x, circle2.y);
+   text(circle2.y, circle2.x, circle2.y +10);
+
+   pinkNoise();
+
 
 }
 
@@ -137,9 +151,13 @@ function sadness(){
 
 function move(){
 
-    /*circle1.x = circle1.x + circle1.vx;
-    circle1.y = circle1.y + circle1.vy;
-*/
+    //circle1.x = circle1.x + circle1.vx;
+    //circle1.y = circle1.y + circle1.vy;
+
+
+    //circle1.x = mouseX
+   // circle1.y = mouseY
+
     circle2.x = circle2.x + circle2.vx;
     circle2.y = circle2.y + circle2.vy;
 
@@ -176,6 +194,8 @@ function checkOffScreen(){
     if(circle1.x < 0 || circle1.x > width || circle1.y < 0 || circle1.y > height ||circle2.x < 0 || circle2.x > width || circle2.y < 0 || circle2.y > height){
 
         state = 'sadness';
+        let dFail = dist(circle1.x,circle1.y,circle2.x,circle2.y);
+        console.log(dFail);
 
     }
 
@@ -185,11 +205,25 @@ function checkOverlap(){
 
     // check if circles overlap
     let d = dist(circle1.x, circle1.y, circle2.x, circle2.y);
-    if (d < circle1.size/2 + circle2.size/2){
+    if (d < circle1.size/2){
 
         state ='love';
+        console.log(d);
 
     }
+
+}
+
+function pinkNoise(){
+
+    let noiseSize=0.015
+    for(let i=0; i < width*4.5; i++){
+    let noiseNum = noise((mouseX + i)*noiseSize, mouseY*noiseSize);
+
+    stroke(noiseNum*255);
+    line(i, mouseY+noiseNum*200, isSecureContext, height);
+
+}
 
 }
 
@@ -197,7 +231,7 @@ function display(){
 
     // display circles
     ellipse(circle1.x, circle1.y, circle1.size);
-    ellipse(circle2.x, circle1.y, circle2.size);
+    ellipse(circle2.x, circle2.y, circle2.size);
 }
 
 function mousePressed(){
