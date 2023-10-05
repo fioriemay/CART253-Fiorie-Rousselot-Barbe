@@ -28,11 +28,16 @@ let circle2 = {
     vx: 0,
     vy: 0,
     speed: 3,
+    tx: 0,
+    ty: 10,
     
 
 }
 
 let state = 'title'; // can be : title, simulation, love or sadness.
+
+
+
 
 function setup() {
 
@@ -41,6 +46,8 @@ createCanvas(500, 500);
 setupCircles();
 
 }
+
+
 
 function setupCircles(){
 
@@ -152,12 +159,19 @@ function sadness(){
 
 function move(){
 
-    //circle1.x = circle1.x + circle1.vx;
-    //circle1.y = circle1.y + circle1.vy;
 
+/*
+    circle2.x = circle2.x + circle2.vx;
+    circle2.y = circle2.y + circle2.vy;*/
 
-    //circle1.x = mouseX
-   // circle1.y = mouseY
+    circle2.tx = circle2.tx + 0.025;
+    circle2.ty = circle2.ty + 0.025;
+    
+    let noiseX = noise(circle2.tx);
+    let noiseY = noise(circle2.ty);
+
+    circle2.vx = map(noiseX, 0,1, -circle2.speed, circle2.speed);
+    circle2.vy = map(noiseY, 0, 1, -circle2.speed, circle2.speed);
 
     circle2.x = circle2.x + circle2.vx;
     circle2.y = circle2.y + circle2.vy;
