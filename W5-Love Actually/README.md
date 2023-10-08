@@ -1,3 +1,8 @@
-# Template p5 project
+# Love Actually
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+by Fiorie Rousselot-Barbe 40177306
+
+the user circle is controlled by the mouse position, while the second circle moves according to perlin noise.
+
+if two circles overlap, we get the happy ending, if they go off screen we get the sad ending.
+if the user presses A, the program displays a hidden ending.
