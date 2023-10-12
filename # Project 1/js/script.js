@@ -54,7 +54,22 @@ function draw() {
     //main body
     fill(catbody.r, catbody.g, catbody.b);
     ellipse(catbody.x, catbody.y, 450, 370);
-    
     //head sphere
     ellipse(cathead.x, cathead.y, 350, 275);
+    
+    fill(255, 255, 255);
+    text(mouseX + ","+ mouseY, 20, 20);
+    //ears
+    //note: triangle(x1, y1, x2, y2, x3, y3)
+
+    fill(catbody.r, catbody.g, catbody.b);
+    //rounded ears
+    stroke(161, 124, 96);
+    strokeWeight(8);
+    strokeJoin(ROUND);
+    //first ear
+    triangle(262, 263, 248, 180, 338, 211);
+    triangle(455, 216, 559, 187, 536, 281);
+    
+  
 }
