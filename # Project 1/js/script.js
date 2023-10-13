@@ -16,18 +16,18 @@ shadows: 135, 104, 80
 
 let catbody = {
     //these x and y coordinates are only for the bottom half of the cat's body
-    x:400,
-    y:550,
+    x: 400,
+    y: 550,
     //this color value will be used for the entire cat's body
-    r:161,
-    g:124,
-    b:96,
+    r: 161,
+    g: 124,
+    b: 96,
 }
 
 let cathead = {
 
-    x:400,
-    y:330,
+    x: 400,
+    y: 330,
     // the color is in catbody, we want the head and body to match
 }
 
@@ -35,21 +35,35 @@ let state = 'simulation'; //this can be title screen or simulation
 
 let collar = {
     //ap for appearance, undefined until preload where we locate the image
-    ap:undefined,
-    dragging:false,
-    x:476,
-    y:-18,
-    w:310,
-    h:150,
+    ap: undefined,
+    dragging: false,
+    x: 476,
+    y: -18,
+    w: 310,
+    h: 150,
 
 
 }
 
+let bow = {
+    ap: undefined,
+    dragging: false,
+    x: 40,
+    y: 9,
+    w: 310,
+    h: 150,
+
+}
+
+
+
 //DISTANCES USED FOR DRAG / DROP
 let dCollar = dist(mouseX, mouseY, collar.x, collar.y);
+let dBow = dist(mouseX, mouseY, bow.x, bow.y);
 
 function preload() {
     collar.ap = loadImage('assets/images/collar.png');
+    bow.ap = loadImage('assets/images/bow.png');
 }
 
 
@@ -59,6 +73,8 @@ function setup() {
     //creating a canvas
     createCanvas(800, 600);
 
+    
+
 }
 
 
@@ -66,7 +82,7 @@ function setup() {
 function draw() {
 
     //black background
-background(0);
+background(231, 220, 232);
 
 
 if(state === 'title'){
@@ -167,6 +183,21 @@ function accessories(){
         collar.x = mouseX 
         collar.y = mouseY 
       }
+
+      image(bow.ap, bow.x, bow.y, /*collar.w, collar.h*/);
+
+      if (bow.dragging) {
+        
+        /*
+        let offsetX = collar.x - mouseX;
+        let offsetY = collar.y - mouseY;
+*/
+        bow.x = mouseX 
+        bow.y = mouseY 
+      }
+
+      
+
 }
 
 function title(){
@@ -199,6 +230,11 @@ function keyPressed(){
         
           }
 
+        if (mouseX > bow.x && mouseX < bow.x + bow.w && mouseY > bow.y && mouseY < bow.y + bow.h) {
+         bow.dragging = true;
+        
+        }
+
 
     }
     
@@ -207,4 +243,5 @@ function keyPressed(){
     function mouseReleased() {
         // Quit dragging
         collar.dragging = false;
+        bow.dragging = false;
       }
