@@ -38,10 +38,15 @@ let collar = {
     ap:undefined,
     dragging:false,
     x:476,
-    y:51,
+    y:-18,
+    w:310,
+    h:150,
 
 
 }
+
+//DISTANCES USED FOR DRAG / DROP
+let dCollar = dist(mouseX, mouseY, collar.x, collar.y);
 
 function preload() {
     collar.ap = loadImage('assets/images/collar.png');
@@ -152,7 +157,16 @@ line(456, 369, 514, 368 );
 function accessories(){
 
     //image (image var location, x, y, width, height)
-    image(collar.ap, collar.x, collar.y);
+    image(collar.ap, collar.x, collar.y, collar.w, collar.h);
+    if (collar.dragging) {
+        
+        /*
+        let offsetX = collar.x - mouseX;
+        let offsetY = collar.y - mouseY;
+*/
+        collar.x = mouseX 
+        collar.y = mouseY 
+      }
 }
 
 function title(){
@@ -179,9 +193,18 @@ function keyPressed(){
     function mousePressed(){
 
     if(state = 'simulation'){
-
+        
+        if (mouseX > collar.x && mouseX < collar.x + collar.w && mouseY > collar.y && mouseY < collar.y + collar.h) {
+            collar.dragging = true;
+        
+          }
 
 
     }
     
     }
+
+    function mouseReleased() {
+        // Quit dragging
+        collar.dragging = false;
+      }
