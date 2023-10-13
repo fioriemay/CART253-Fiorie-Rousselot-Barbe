@@ -31,7 +31,7 @@ let cathead = {
     // the color is in catbody, we want the head and body to match
 }
 
-let state = 'simulation'; //this can be title screen or simulation
+let state = 'title'; //this can be title screen or simulation
 
 let collar = {
     //ap for appearance, undefined until preload where we locate the image
@@ -55,6 +55,7 @@ let bow = {
 
 }
 
+let bowVal;
 
 
 //DISTANCES USED FOR DRAG / DROP
@@ -73,7 +74,13 @@ function setup() {
     //creating a canvas
     createCanvas(800, 600);
 
-    
+    //sliders
+    let bowSlider = createSlider(0, 255, 100);
+    bowSlider.position = (0,0);
+    bowVal = bowSlider.value();
+
+    let collarSlider = createSlider();
+    collarSlider.position = (0,0);
 
 }
 
@@ -176,22 +183,16 @@ function accessories(){
     image(collar.ap, collar.x, collar.y, collar.w, collar.h);
     if (collar.dragging) {
         
-        /*
-        let offsetX = collar.x - mouseX;
-        let offsetY = collar.y - mouseY;
-*/
         collar.x = mouseX 
         collar.y = mouseY 
       }
 
-      image(bow.ap, bow.x, bow.y, /*collar.w, collar.h*/);
+      tint(0, bowVal, 100);
+      image(bow.ap, bow.x, bow.y, bow.w, bow.h);
 
       if (bow.dragging) {
         
-        /*
-        let offsetX = collar.x - mouseX;
-        let offsetY = collar.y - mouseY;
-*/
+       
         bow.x = mouseX 
         bow.y = mouseY 
       }
@@ -204,9 +205,11 @@ function title(){
 
 push();
 textSize(64);
-fill(200, 100, 100);
+fill(43, 6, 34);
 textAlign(CENTER, CENTER);
 text('Fiorie\'s cat game!', width/2, height/2);
+textSize(45);
+text('press p to play!', 400, 400);
 pop();
 
 
@@ -236,6 +239,11 @@ function keyPressed(){
         }
 
 
+    }
+
+    else if (state = 'title'){
+
+        
     }
     
     }
