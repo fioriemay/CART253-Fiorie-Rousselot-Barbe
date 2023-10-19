@@ -55,16 +55,28 @@ let bow = {
 
 }
 
+let pearls = {
+    ap: undefined,
+    dragging: false,
+    x: 677,
+    y: 153,
+    w: 310,
+    h: 150,
+
+}
+
 let bowVal;
 
 
 //DISTANCES USED FOR DRAG / DROP
 let dCollar = dist(mouseX, mouseY, collar.x, collar.y);
 let dBow = dist(mouseX, mouseY, bow.x, bow.y);
+let dPearls = dist(mouseX, mouseY, pearls.x, pearls.y);
 
 function preload() {
     collar.ap = loadImage('assets/images/collar.png');
     bow.ap = loadImage('assets/images/bow.png');
+    pearls.ap = loadImage('assets/images/pearls.png');
 }
 
 
@@ -80,6 +92,9 @@ function setup() {
     bowVal = bowSlider.value();
 
     let collarSlider = createSlider();
+    collarSlider.position = (0,0);
+
+    let pearlsSlider = createSlider();
     collarSlider.position = (0,0);
 
 }
@@ -187,7 +202,7 @@ function accessories(){
         collar.y = mouseY 
       }
 
-      tint(0, bowVal, 100);
+      //tint(0, bowVal, 100);
       image(bow.ap, bow.x, bow.y, bow.w, bow.h);
 
       if (bow.dragging) {
@@ -195,6 +210,15 @@ function accessories(){
        
         bow.x = mouseX 
         bow.y = mouseY 
+      }
+
+      image(pearls.ap, pearls.x, pearls.y, pearls.w, pearls.h);
+
+      if (pearls.dragging) {
+        
+       
+        pearls.x = mouseX 
+        pearls.y = mouseY 
       }
 
       
@@ -207,7 +231,7 @@ push();
 textSize(64);
 fill(43, 6, 34);
 textAlign(CENTER, CENTER);
-text('Fiorie\'s cat game!', width/2, height/2);
+text('Fiorie\'s cat dress-up game!', width/2, height/2);
 textSize(45);
 text('press p to play!', 400, 400);
 pop();
@@ -238,6 +262,11 @@ function keyPressed(){
         
         }
 
+        if (mouseX > pearls.x && mouseX < pearls.x + pearls.w && mouseY > pearls.y && mouseY < pearls.y + pearls.h) {
+            pearls.dragging = true;
+           
+           }
+
 
     }
 
@@ -252,4 +281,5 @@ function keyPressed(){
         // Quit dragging
         collar.dragging = false;
         bow.dragging = false;
+        pearls.dragging = false;
       }
