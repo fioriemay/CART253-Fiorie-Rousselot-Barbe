@@ -2,8 +2,7 @@
  * Project 1
  * Fiorie Rousselot-Barbe
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * Cat Dress-up Game
  */
 
 "use strict";
@@ -65,7 +64,15 @@ let pearls = {
 
 }
 
+let bowSlider;
 let bowVal;
+
+let collarSlider;
+let collarVal;
+
+let pearlsSlider;
+let pearlsVal;
+l
 
 
 //DISTANCES USED FOR DRAG / DROP
@@ -87,14 +94,14 @@ function setup() {
     createCanvas(800, 600);
 
     //sliders
-    let bowSlider = createSlider(0, 255, 100);
+    bowSlider = createSlider(0, 255, 0, 20);
     bowSlider.position = (0,0);
-    bowVal = bowSlider.value();
+    
 
-    let collarSlider = createSlider();
+    collarSlider = createSlider(0, 255, 0, 20);
     collarSlider.position = (0,0);
 
-    let pearlsSlider = createSlider();
+    pearlsSlider = createSlider(0, 255, 0, 20);
     collarSlider.position = (0,0);
 
 }
@@ -194,15 +201,21 @@ line(456, 369, 514, 368 );
 
 function accessories(){
 
+    bowVal = bowSlider.value();
+    collarVal = collarSlider.value();
+    pearlsVal = pearlsSlider.value();
+
     //image (image var location, x, y, width, height)
+    tint(200, 10, collarVal);
     image(collar.ap, collar.x, collar.y, collar.w, collar.h);
     if (collar.dragging) {
         
         collar.x = mouseX 
         collar.y = mouseY 
       }
+      noTint();
 
-      //tint(0, bowVal, 100);
+      tint(200, 10, bowVal);
       image(bow.ap, bow.x, bow.y, bow.w, bow.h);
 
       if (bow.dragging) {
@@ -211,7 +224,9 @@ function accessories(){
         bow.x = mouseX 
         bow.y = mouseY 
       }
+      noTint();
 
+      tint(200, 10, pearlsVal);
       image(pearls.ap, pearls.x, pearls.y, pearls.w, pearls.h);
 
       if (pearls.dragging) {
@@ -220,6 +235,7 @@ function accessories(){
         pearls.x = mouseX 
         pearls.y = mouseY 
       }
+      noTint();
 
       
 
@@ -228,12 +244,16 @@ function accessories(){
 function title(){
 
 push();
+
 textSize(64);
 fill(43, 6, 34);
 textAlign(CENTER, CENTER);
 text('Fiorie\'s cat dress-up game!', width/2, height/2);
+
 textSize(45);
+textStyle(ITALIC);
 text('press p to play!', 400, 400);
+
 pop();
 
 
@@ -254,16 +274,22 @@ function keyPressed(){
         
         if (mouseX > collar.x && mouseX < collar.x + collar.w && mouseY > collar.y && mouseY < collar.y + collar.h) {
             collar.dragging = true;
+            bow.dragging = false;
+            pearls.dragging = false;
         
           }
 
         if (mouseX > bow.x && mouseX < bow.x + bow.w && mouseY > bow.y && mouseY < bow.y + bow.h) {
          bow.dragging = true;
+         collar.dragging = false;
+         pearls.dragging = false;
         
         }
 
         if (mouseX > pearls.x && mouseX < pearls.x + pearls.w && mouseY > pearls.y && mouseY < pearls.y + pearls.h) {
             pearls.dragging = true;
+            collar.dragging = false;
+            bow.dragging = false;
            
            }
 
