@@ -8,20 +8,23 @@
 
 "use strict";
 
-// our fish
+/*
 let fish1;
 let fish2;
 let fish3;
-let fish4;
+let fish4;*/
+
+//our fish school array
+let school = [];
 
 function setup() {
   createCanvas(600, 600);
 
-  // our fish created using createFish function
-  fish1 = createFish(random(0, width), random(0, height));
-  fish2 = createFish(random(0, width), random(0, height));
-  fish3 = createFish(random(0, width), random(0, height));
-  fish4 = createFish(random(0, width), random(0, height));
+  //creating fish using createfish function
+  school[0] = createFish(random(0, width), random(0, height));
+  school[1] = createFish(random(0, width), random(0, height));
+  school[2] = createFish(random(0, width), random(0, height));
+  school[3] = createFish(random(0, width), random(0, height));
 }
 
 // fish has x and y position parameters
@@ -43,15 +46,15 @@ function createFish(x, y) {
 function draw() {
   background(0);
 
-  moveFish(fish1);
-  moveFish(fish2);
-  moveFish(fish3);
-  moveFish(fish4);
+   //for loop counts from 0-3, aka it will create our 4 fishes (0,1,2,3)
+  for (let i = 0; i < 4; i++) {
+    moveFish(school[i]);
+  }
 
-  displayFish(fish1);
-  displayFish(fish2);
-  displayFish(fish3);
-  displayFish(fish4);
+  // same logic to display them
+  for (let i = 0; i < 4; i++) {
+    displayFish(school[i]);
+  }
 }
 
 
