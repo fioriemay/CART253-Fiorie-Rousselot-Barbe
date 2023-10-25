@@ -27,6 +27,7 @@ let userCircle = {
 let school = [];
 let schoolSize = 4;
 
+
 function setup() {
   createCanvas(600, 600);
 
@@ -56,10 +57,18 @@ function createFish(x, y) {
 
 // moving fish, displaying fish, black background
 function draw() {
+
   background(0);
+
+  
 
   if(state === 'simulation'){
     simulation();
+
+  }
+
+  else if(state === 'end1'){
+    end1();
 
   }
   
@@ -83,7 +92,23 @@ function simulation(){
   userSetup();
   displayUser();
 
+  checkFish();
+
 }
+
+//ending if the user touches one of the fishes
+function end1(){
+
+  push();
+  textSize(64);
+  fill(200, 100, 100);
+  textAlign(CENTER, CENTER);
+  text('you touched the fish!', width/2, height/2);
+  pop();
+
+}
+
+
 
 ////////////FISH FUNCTIONS///////////////
 
@@ -117,6 +142,25 @@ function displayFish(fish) {
   pop();
 }
 
+//if user touches fishes, end simulation
+function checkFish(){
+
+  for (let i = 0; i < school.length; i++) {
+    
+    // dist (x1,y1, x2, y2)
+    let d=  dist(userCircle.x, userCircle.y, school[i].x, school[i].y);
+
+
+    if(d < (school[i].size / 2) + (userCircle.size/2)){
+
+      state = 'end1';
+
+    }
+  }
+
+
+
+}
 /////////////USER FUNCTIONS////////////////
 
 
