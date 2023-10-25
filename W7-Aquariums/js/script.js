@@ -47,14 +47,12 @@ function draw() {
   background(0);
 
    //for loop counts from 0-3, aka it will create our 4 fishes (0,1,2,3)
-  for (let i = 0; i < 4; i++) {
+   // and display them as well
+   for (let i = 0; i < 4; i++) {
     moveFish(school[i]);
-  }
-
-  // same logic to display them
-  for (let i = 0; i < 4; i++) {
     displayFish(school[i]);
   }
+  
 }
 
 
