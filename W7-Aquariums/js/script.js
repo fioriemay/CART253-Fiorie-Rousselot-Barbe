@@ -8,6 +8,8 @@
 
 "use strict";
 
+let state = 'simulation';
+
 //user controlled circle
 let userCircle = {
 
@@ -56,7 +58,22 @@ function createFish(x, y) {
 function draw() {
   background(0);
 
-   //for loop counts from 0-3, aka it will create our 4 fishes (0,1,2,3)
+  if(state === 'simulation'){
+    simulation();
+
+  }
+  
+  
+}
+
+
+//////// STATE FUNCTIONS //////////////
+
+
+
+function simulation(){
+
+ //for loop counts from 0-3, aka it will create our 4 fishes (0,1,2,3)
    // and display them as well
    for (let i = 0; i < school.length; i++) {
     moveFish(school[i]);
@@ -65,8 +82,11 @@ function draw() {
 
   userSetup();
   displayUser();
-  
+
 }
+
+////////////FISH FUNCTIONS///////////////
+
 
 
 // deciding if fish changes direction, moving fish
@@ -96,6 +116,10 @@ function displayFish(fish) {
   ellipse(fish.x, fish.y, fish.size);
   pop();
 }
+
+/////////////USER FUNCTIONS////////////////
+
+
 
 //setting velocities to random, 
 //and checking mouse positions to have circle follow user
