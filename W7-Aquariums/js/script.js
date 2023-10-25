@@ -8,23 +8,30 @@
 
 "use strict";
 
-/*
-let fish1;
-let fish2;
-let fish3;
-let fish4;*/
+//user controlled circle
+let userCircle = {
+
+  x: 600/3,
+  y: 250,
+  size: 100,
+  vx: 0,
+  vy: 0,
+  speed: 3,
+
+
+}
 
 //our fish school array
 let school = [];
+let schoolSize = 4;
 
 function setup() {
   createCanvas(600, 600);
 
-  //creating fish using createfish function
-  school[0] = createFish(random(0, width), random(0, height));
-  school[1] = createFish(random(0, width), random(0, height));
-  school[2] = createFish(random(0, width), random(0, height));
-  school[3] = createFish(random(0, width), random(0, height));
+  //creating fish using createfish function, for loop creates 4 (0,1,2,3)
+  for (let i = 0; i < schoolSize; i++) {
+    school[i] = createFish(random(0,width),random(0,height));
+  }
 }
 
 // fish has x and y position parameters
@@ -48,10 +55,13 @@ function draw() {
 
    //for loop counts from 0-3, aka it will create our 4 fishes (0,1,2,3)
    // and display them as well
-   for (let i = 0; i < 4; i++) {
+   for (let i = 0; i < school.length; i++) {
     moveFish(school[i]);
     displayFish(school[i]);
   }
+
+  userSetup();
+  displayUser();
   
 }
 
@@ -82,4 +92,48 @@ function displayFish(fish) {
   noStroke();
   ellipse(fish.x, fish.y, fish.size);
   pop();
+}
+
+//setting velocities to random, 
+//and checking mouse positions to have circle follow user
+function userSetup(){
+
+  userCircle.vx = random(-userCircle.speed, userCircle.speed);
+  userCircle.vy = random(-userCircle.speed, userCircle.speed);
+
+  if (mouseX > userCircle.x){
+
+      userCircle.vx = 2;
+  
+    }
+  
+    else if (mouseX < userCircle.x){
+  
+      userCircle.vx = -2;
+  
+    }
+    
+    if (mouseY> userCircle.y){
+  
+      userCircle.vy = 2;
+  
+    }
+  
+    else if (mouseY < userCircle.y){
+  
+      userCircle.vy = -2;
+  
+    }
+  
+    userCircle.x = userCircle.x + userCircle.vx;
+    userCircle.y = userCircle.y + userCircle.vy;
+
+   
+}
+
+//displaying the user circle
+function displayUser(){
+
+  fill(255, 255, 255);
+  ellipse(userCircle.x, userCircle.y, userCircle.size);
 }
