@@ -43,7 +43,10 @@ function createFish(x, y) {
     size: 50,
     vx: 0,
     vy: 0,
-    speed: 2
+    speed: 2,
+    r: random(0,255),
+    g: random(0,255),
+    b: random(0,255),
   };
   return fish;
 }
@@ -88,7 +91,7 @@ function moveFish(fish) {
 // displaying the fish as ellipses
 function displayFish(fish) {
   push();
-  fill(200, 100, 100);
+  fill(fish.r, fish.g, fish.b);
   noStroke();
   ellipse(fish.x, fish.y, fish.size);
   pop();
