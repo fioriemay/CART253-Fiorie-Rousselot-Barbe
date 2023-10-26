@@ -60,7 +60,13 @@ function draw() {
 
   background(0);
 
+    //displays mouseX and mouseY for debug purposes
+  push();
+  fill(255, 255, 255);
+  text(mouseX + ","+ mouseY, 20, 20);
+  pop();
   
+  //checks the state of  the simulation
 
   if(state === 'simulation'){
     simulation();
@@ -72,6 +78,10 @@ function draw() {
 
   }
   
+  else if(state === 'end2'){
+    end2();
+
+  }
   
 }
 
@@ -93,6 +103,7 @@ function simulation(){
   displayUser();
 
   checkFish();
+  checkUser();
 
 }
 
@@ -100,10 +111,21 @@ function simulation(){
 function end1(){
 
   push();
-  textSize(64);
-  fill(200, 100, 100);
+  textSize(40);
+  fill(240, 120, 208);
   textAlign(CENTER, CENTER);
-  text('you touched the fish!', width/2, height/2);
+  text('you squashed the fish!', width/2, height/2);
+  pop();
+
+}
+
+function end2(){
+
+  push();
+  textSize(40);
+  fill(212, 152, 235);
+  textAlign(CENTER, CENTER);
+  text('you left the aquarium...', width/2, height/2);
   pop();
 
 }
@@ -207,4 +229,17 @@ function displayUser(){
 
   fill(255, 255, 255);
   ellipse(userCircle.x, userCircle.y, userCircle.size);
+}
+
+
+//checks location of the user
+
+function checkUser(){
+
+  if(userCircle.x > 600 || userCircle.x < 0 || userCircle.y > 600 || userCircle.y < 0){
+
+    state = 'end2';
+
+  }
+
 }
