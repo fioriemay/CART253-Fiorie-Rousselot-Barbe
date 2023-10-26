@@ -1,9 +1,8 @@
 /**
- * Title of Project
- * Author Name
+ * Age of Aquariums
+ * Fiorie Rousselot-Barbe
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * Avoid leaving the aquarium and touching the fish!
  */
 
 "use strict";

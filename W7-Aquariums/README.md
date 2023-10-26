@@ -1,3 +1,3 @@
-# Template p5 project
+# Fiorie's Age of Aquariums Exercise
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Using arrays to create a game where you should avoid stepping on the fish or leaving the aquarium!
