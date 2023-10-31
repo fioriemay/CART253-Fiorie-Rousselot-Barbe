@@ -2,8 +2,7 @@
  * JuggleGarden
  * Fiorie Rousselot-Barbe
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * user control element: planting flowers
  */
 
 "use strict";
