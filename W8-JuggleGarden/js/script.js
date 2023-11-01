@@ -1,6 +1,6 @@
 /**
- * JuggleGarden
- * Fiorie Rousselot-Barbe
+ * Fiorie's fairy garden
+ * by Fiorie Rousselot-Barbe
  * 
  * user control element: planting flowers
  */
@@ -20,7 +20,14 @@ let garden = {
       g: 180,
       b: 120
     }
+
+    
   };
+  
+  //current state
+  let state = 'simulation';
+
+ 
 
 function preload() {
 
@@ -33,6 +40,8 @@ function setup() {
     createCanvas(600, 600);
 
     // using a for loop to create our flowers
+    // leaving all this for now but we're creating flowers using mousePressed instead
+    // no flowers should spawn when the simulation is launched because we set garden.numFLowers to zero
     for (let i = 0; i < garden.numFlowers; i++) {
       
         //variables regarding the parameters
@@ -50,6 +59,7 @@ function setup() {
       let flower = new Flower(x, y, size, stemLength, petalColor);
       //add flower to array
       garden.flowers.push(flower);
+      
 }
 }
 
@@ -64,6 +74,11 @@ function draw() {
    let flower = garden.flowers[i];
    flower.display();
  }
+
+ //testing out fairy
+ let fairy1 = new Fairy();
+ fairy1.move();
+ fairy1.display();
 }
 
 function mousePressed(){
@@ -74,11 +89,13 @@ function mousePressed(){
     let petalColor = {
       r: random(100, 255),
       g: random(100, 255),
-      b: random(100, 255)
+      b: random(100, 255),
     }
 
     let flower = new Flower(x, y, size, stemLength, petalColor);
       //add flower to array
       garden.flowers.push(flower);
+
+      
     
 }
