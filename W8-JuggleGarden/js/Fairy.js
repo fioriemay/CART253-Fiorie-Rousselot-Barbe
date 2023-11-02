@@ -44,8 +44,8 @@ move(){
 
     this.xx = map(noiseX, 0, 1, -this.speed, this.speed);
     this.yy = map(noiseY, 0, 1, -this.speed, this.speed);
-    this.x = this.x + this.xx;
-    this.y = this.y + this.yy;
+    this.x = constrain((this.x + this.xx), 0, 600);
+    this.y = constrain((this.y + this.yy), 0, 600);
     
     
 

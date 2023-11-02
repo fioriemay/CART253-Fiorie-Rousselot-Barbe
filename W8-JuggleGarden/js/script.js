@@ -61,9 +61,11 @@ function setup() {
       //add flower to array
       garden.flowers.push(flower);
 
-     fairy1 = new Fairy();
+     
       
 }
+
+fairy1 = new Fairy();
 }
 
 
