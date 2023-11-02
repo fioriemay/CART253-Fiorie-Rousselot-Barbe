@@ -45,8 +45,17 @@ move(){
 
     this.xx = map(noiseX, 0, 1, -this.speed, this.speed);
     this.yy = map(noiseY, 0, 1, -this.speed, this.speed);
+
+    
+    //constraining the fairy to the canvas
+    /*
     this.x = constrain((this.x + this.xx), 0, 600);
-    this.y = constrain((this.y + this.yy), 0, 600);
+    this.y = constrain((this.y + this.yy), 0, 600);*/
+
+
+    //adding the original x value and the perlin noise
+    this.x = this.x + this.xx;
+    this.y = this.y + this.yy;
     
     
 
@@ -54,6 +63,7 @@ move(){
 
 display(){
 
+    //displaying the fairy on the screen
     push();
     noStroke();
     fill(this.bodyColor.r, this.bodyColor.g, this.bodyColor.b);

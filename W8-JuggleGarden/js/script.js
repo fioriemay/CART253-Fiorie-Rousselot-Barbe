@@ -26,6 +26,7 @@ let garden = {
   
   //current state
   let state = 'simulation';
+  //my fairy object
   let fairy1;
 
  
@@ -38,6 +39,7 @@ function preload() {
 
 function setup() {
 
+  //creating my canvas
     createCanvas(600, 600);
 
     // using a for loop to create our flowers
@@ -87,6 +89,21 @@ function draw() {
 
  fairy1.move();
  fairy1.display();
+
+ //if there are too many flowers, the state changes to end the game
+ if(garden.flowers.length>18){
+
+  state = 'end1';
+
+ }
+
+ //if the fairy escapes the garden, end the game 
+ else if(fairy1.x > 605 || fairy1.x < 0 || fairy1.y > 605 || fairy1.y < 0){
+
+  state = 'end2';
+
+ }
+ 
 }
 //--END OF IF STATE SIMULATION -- //
 
@@ -96,14 +113,26 @@ if(state === 'end1'){
     textSize(25);
     fill(255, 150, 200);
     textAlign(CENTER, CENTER);
-    text('ending!!', width/2, height/2);
+    text('the fairy got lost amongst the flowers!', width/2, height/2);
     pop();
+
+}
+//END OF END1 IF//
+
+if(state === 'end2'){
+  push();
+  textSize(25);
+  fill(255, 150, 200);
+  textAlign(CENTER, CENTER);
+  text('the fairy ran away!', width/2, height/2);
+  pop();
 
 }
 }
 //--END OF DRAW FUNCTION (note so i dont mix up my brackets)--//
 
 function mousePressed(){
+  //flower parameters for when mousePressed spawns one
     let x = random(0, width);
     let y = random(0, height);
     let size = random(50, 80);
