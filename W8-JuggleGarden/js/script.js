@@ -64,7 +64,7 @@ function setup() {
 }
 
 
-
+let fairy1 = new Fairy();
 function draw() {
  //grass or bg color
  background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
@@ -75,8 +75,8 @@ function draw() {
    flower.display();
  }
 
- //testing out fairy
- let fairy1 = new Fairy();
+ //creating the fairy
+
  fairy1.move();
  fairy1.display();
 }

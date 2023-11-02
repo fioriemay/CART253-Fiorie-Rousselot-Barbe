@@ -27,10 +27,8 @@ constructor() {
 
     this.vx = 0;
     this.vy = 10;
-
     this.xx = 0;
     this.yy = 0;
-
     this.speed = 3;
 
 
@@ -38,7 +36,6 @@ constructor() {
 
 move(){
 
-    
     this.vx = this.vx + 0.025;
     this.vy = this.vy + 0.025;
     
@@ -47,9 +44,10 @@ move(){
 
     this.xx = map(noiseX, 0, 1, -this.speed, this.speed);
     this.yy = map(noiseY, 0, 1, -this.speed, this.speed);
-
     this.x = this.x + this.xx;
     this.y = this.y + this.yy;
+    
+    
 
 }
 
