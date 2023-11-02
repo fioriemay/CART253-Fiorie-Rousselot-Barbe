@@ -26,6 +26,7 @@ let garden = {
   
   //current state
   let state = 'simulation';
+  let fairy1;
 
  
 
@@ -59,12 +60,14 @@ function setup() {
       let flower = new Flower(x, y, size, stemLength, petalColor);
       //add flower to array
       garden.flowers.push(flower);
+
+     fairy1 = new Fairy();
       
 }
 }
 
 
-let fairy1 = new Fairy();
+
 function draw() {
  //grass or bg color
  background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
