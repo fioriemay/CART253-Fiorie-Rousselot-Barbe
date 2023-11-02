@@ -36,6 +36,7 @@ constructor() {
 
 move(){
 
+    //moving the fairy using perlin noise
     this.vx = this.vx + 0.025;
     this.vy = this.vy + 0.025;
     

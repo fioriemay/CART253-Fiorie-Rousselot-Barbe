@@ -65,12 +65,15 @@ function setup() {
       
 }
 
+//setting variable to an object
 fairy1 = new Fairy();
 }
 
 
 
 function draw() {
+
+  if(state === 'simulation'){
  //grass or bg color
  background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
 
@@ -85,12 +88,27 @@ function draw() {
  fairy1.move();
  fairy1.display();
 }
+//--END OF IF STATE SIMULATION -- //
+
+if(state === 'end1'){
+
+  push();
+    textSize(25);
+    fill(255, 150, 200);
+    textAlign(CENTER, CENTER);
+    text('ending!!', width/2, height/2);
+    pop();
+
+}
+}
+//--END OF DRAW FUNCTION (note so i dont mix up my brackets)--//
 
 function mousePressed(){
     let x = random(0, width);
     let y = random(0, height);
     let size = random(50, 80);
     let stemLength = random(50, 100);
+
     let petalColor = {
       r: random(100, 255),
       g: random(100, 255),
@@ -100,7 +118,6 @@ function mousePressed(){
     let flower = new Flower(x, y, size, stemLength, petalColor);
       //add flower to array
       garden.flowers.push(flower);
-
+  }
       
     
-}
