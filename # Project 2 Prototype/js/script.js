@@ -105,11 +105,13 @@ for(let enemy of enemies){
 
 function mousePressed(){
 
+    //creating bullets everytime the player clicks on the left mouse button
     let bullet = {
 
         x:mouseX,
         y:525,
     
     }
+    //as a bullet gets created, we add it to our array of bullets
 bullets.push(bullet);
 }
