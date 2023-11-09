@@ -91,7 +91,8 @@ for(let enemy of enemies){
     for(let bullet of bullets){
 
         if(dist(enemy.x, enemy.y, bullet.x, bullet.y) < 10){
-
+            //checks array, splices(gets rid of) one enemy
+            enemies.splice(enemies.indexOf(enemy), 1);
 
         }
 
