@@ -26,9 +26,14 @@ let player = {
 
 }
 
+//enemy variable, we'll add more details to this further down the line
+let enemy;
+
 //array of bullets to group them up more simply when they spawn
 let bullets = [];
 
+//array of enemies
+let enemies = [];
 
 function preload() {
 
@@ -38,9 +43,15 @@ function preload() {
 
 function setup() {
 createCanvas(600,600);
-for(let i = 0; i < 10;){
+for(let i = 0; i < 10; i++){
 
+    enemy = {
 
+        x:random(0, width),
+        y:random(-300, height),
+
+    }
+    enemies.push(enemy);
 }
 
 }
@@ -65,6 +76,26 @@ for(let bullet of bullets){
     ellipse(bullet.x, bullet.y, 15);
     //moving the bullet upwards
     bullet.y -=6;
+}
+
+for(let enemy of enemies){
+
+        enemy.y +=2;
+        rect(enemy.x, enemy.y, 15);
+
+}
+
+//nested loop, checking enemies and bullets
+for(let enemy of enemies){
+
+    for(let bullet of bullets){
+
+        if(dist(enemy.x, enemy.y, bullet.x, bullet.y) < 10){
+
+
+        }
+
+    }
 }
 }
 
