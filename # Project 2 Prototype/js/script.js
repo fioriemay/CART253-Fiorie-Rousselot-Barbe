@@ -43,6 +43,8 @@ function preload() {
 
 function setup() {
 createCanvas(600,600);
+
+//spawn enemies
 for(let i = 0; i < 10; i++){
 
     enemy = {
@@ -61,26 +63,30 @@ for(let i = 0; i < 10; i++){
 function draw() {
 //setting the background color
 background(bg.r, bg.g, bg.b);
+rectMode(CENTER);
 
 //used this to locate coordinates easier
 fill(255, 255, 255);
 text(mouseX + ","+ mouseY, 20, 20);
 
 //our player is a circle (for now)
-fill(255,255,255);
+fill(166,30,86);
 ellipse(mouseX, player.y, player.w, player.h);
 
 //for each bullet in the array "bullets"
 for(let bullet of bullets){
 
+    fill(201, 95, 139);
     ellipse(bullet.x, bullet.y, 15);
     //moving the bullet upwards
     bullet.y -=6;
 }
 
+//draw enemies
 for(let enemy of enemies){
 
         enemy.y +=2;
+        fill(115, 29, 64);
         rect(enemy.x, enemy.y, 15);
 
 }
@@ -91,8 +97,18 @@ for(let enemy of enemies){
     for(let bullet of bullets){
 
         if(dist(enemy.x, enemy.y, bullet.x, bullet.y) < 10){
-            //checks array, splices(gets rid of) one enemy
+            //checks array, splices(gets rid of) one enemy and the bullet that was shot.
             enemies.splice(enemies.indexOf(enemy), 1);
+            bullets.splice(bullets.indexOf(bullets), 1);
+
+            //for now enemies only respawn if they were shot and did not go off screen, this will be fixed soon
+            let respawnEnemy = {
+
+                x:random(0, width),
+                y:random(-300, height),
+        
+            }
+            enemies.push(respawnEnemy);
 
         }
 
