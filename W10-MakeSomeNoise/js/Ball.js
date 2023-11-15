@@ -4,13 +4,16 @@ class Ball {
       this.x = x;
       this.y = y;
       this.size = 50;
+
       //random color per ball
       this.fill = {
         r: random(200,255),
         g: random(200,255),
-        b: random(200,255)
+        b: random(200,255),
       };
-      this.speed = 3;
+
+      //changed speed to a random so each ball has its own speed/velocity
+      this.speed = random(3,12);
       this.vx = random(-this.speed,this.speed);
       this.vy = random(-this.speed,this.speed);
   
