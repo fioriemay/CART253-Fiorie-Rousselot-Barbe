@@ -11,6 +11,10 @@
 // array for balls
 let balls = [];
 
+//array for cubes
+
+let cubes = [];
+
 // f minor
 let notes = [`F3`,`G3`,`Ab4`,`Bb4`,`C4`,`Db4`,`Eb4`,`F4`];
 
@@ -47,6 +51,13 @@ function draw() {
       ball.bounce();
       ball.display();
     }
+
+    for (let i = 0; i < cubes.length; i++) {
+        let cube = cubes[i];
+        cube.move();
+        cube.bounce();
+        cube.display();
+      }
 }
 
 function mousePressed() {
@@ -61,6 +72,23 @@ function mousePressed() {
     let note = random(notes);
     let ball = new Ball(x,y,note);
     balls.push(ball);
+
+  }
+
+  function keyPressed(){
+
+    if(key === 'c'){
+
+        createCube(mouseX,mouseY);
+
+    }
+  }
+
+  function createCube(x,y){
+
+    let note = random(notes);
+    let cube = new Cube(x,y,note);
+    cubes.push(cube);
 
   }
 
