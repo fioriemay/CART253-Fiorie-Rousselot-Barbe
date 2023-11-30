@@ -26,6 +26,10 @@ let player = {
 
 }
 
+// the player's score is kept track of
+// it starts at zero
+let gameScore = 0;
+
 //enemy variable, we'll add more details to this further down the line
 let enemy;
 
@@ -110,9 +114,13 @@ for(let enemy of enemies){
             }
             enemies.push(respawnEnemy);
 
+            //for each enemy that gets killed, we add 1 to the score!
+            gameScore +=1;
         }
 
     }
+
+    text(gameScore, 25, 25);
 }
 }
 
@@ -122,12 +130,13 @@ for(let enemy of enemies){
 function mousePressed(){
 
     //creating bullets everytime the player clicks on the left mouse button
+    //they are created at the same y level so they are shot upwards and at the mouse X
     let bullet = {
 
         x:mouseX,
         y:525,
     
     }
-    //as a bullet gets created, we add it to our array of bullets
+    //as a bullet gets created, we add it to our array of bullets from earlier
 bullets.push(bullet);
 }
