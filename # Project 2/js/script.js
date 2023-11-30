@@ -1,7 +1,7 @@
 /**
- * Pink Shooter Game (Title TBA)
+ * LoveStruck
  * by Fiorie Rousselot-Barbe
- * 
+ * CART253, Fall 2023
  * 
  * 
  */
@@ -54,7 +54,7 @@ for(let i = 0; i < 10; i++){
     enemy = {
 
         x:random(0, width),
-        y:random(-300, height),
+        y:random(-90, 30),
 
     }
     enemies.push(enemy);
@@ -109,7 +109,7 @@ for(let enemy of enemies){
             let respawnEnemy = {
 
                 x:random(0, width),
-                y:random(-300, height),
+                y:random(-90, 30),
         
             }
             enemies.push(respawnEnemy);
