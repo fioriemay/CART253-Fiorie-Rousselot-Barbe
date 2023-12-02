@@ -8,6 +8,11 @@
 
 "use strict";
 
+//states: title, gameplay, end
+// (we start at the title screen)
+let state = 'title';
+
+
 //background color rgb values
 let bg = {
 
@@ -15,6 +20,10 @@ let bg = {
     g:17,
     b:20,
 }
+
+let newBg;
+
+
 
 //player variable
 let player = {
@@ -40,12 +49,13 @@ let bullets = [];
 let enemies = [];
 
 function preload() {
-
+    newBg = loadImage('assets/images/pinkbg.gif');
 }
 
 
 
 function setup() {
+
 createCanvas(600,600);
 
 //spawn enemies
@@ -61,12 +71,14 @@ for(let i = 0; i < 10; i++){
 }
 
 }
-
+// ------- END OF SETUP ---------
 
 
 function draw() {
 //setting the background color
-background(bg.r, bg.g, bg.b);
+//background(bg.r, bg.g, bg.b);
+background(newBg);
+
 rectMode(CENTER);
 
 //used this to locate coordinates easier
