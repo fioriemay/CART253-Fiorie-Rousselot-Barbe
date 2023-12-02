@@ -21,6 +21,7 @@ let bg = {
     b:20,
 }
 
+//new background will be set to the gif i created
 let newBg;
 
 
@@ -32,6 +33,7 @@ let player = {
     y:525,
     w:95,
     h:95,
+    pic: undefined,
 
 }
 
@@ -48,8 +50,12 @@ let bullets = [];
 //array of enemies
 let enemies = [];
 
+let enemyImg;
+
 function preload() {
     newBg = loadImage('assets/images/pinkbg.gif');
+    player.pic = loadImage('assets/images/heartbow1.png');
+    enemyImg = loadImage('assets/images/enemy.png');
 }
 
 
@@ -82,12 +88,14 @@ background(newBg);
 rectMode(CENTER);
 
 //used this to locate coordinates easier
-fill(255, 255, 255);
-text(mouseX + ","+ mouseY, 20, 20);
+//fill(255, 255, 255);
+//text(mouseX + ","+ mouseY, 20, 20);
 
-//our player is a circle (for now)
-fill(166,30,86);
-ellipse(mouseX, player.y, player.w, player.h);
+
+//displaying player as the image / bow
+image(player.pic, mouseX-75, player.y);
+
+
 
 //for each bullet in the array "bullets"
 for(let bullet of bullets){
@@ -103,7 +111,7 @@ for(let enemy of enemies){
 
         enemy.y +=2;
         fill(115, 29, 64);
-        rect(enemy.x, enemy.y, 15);
+        image(enemyImg, enemy.x, enemy.y, 25, 25);
 
 }
 
@@ -111,8 +119,8 @@ for(let enemy of enemies){
 for(let enemy of enemies){
 
     for(let bullet of bullets){
-
-        if(dist(enemy.x, enemy.y, bullet.x, bullet.y) < 10){
+//enemy location +6 to avoid hitbox errors
+        if(dist(enemy.x+6, enemy.y+6, bullet.x, bullet.y) < 10){
             //checks array, splices(gets rid of) one enemy and the bullet that was shot.
             enemies.splice(enemies.indexOf(enemy), 1);
             bullets.splice(bullets.indexOf(bullets), 1);
