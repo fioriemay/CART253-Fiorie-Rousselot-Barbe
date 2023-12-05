@@ -10,10 +10,10 @@
 
 //states: title, gameplay, end
 // (we start at the title screen)
-let state = 'title';
+let state = 'simulation';
 
 
-//background color rgb values
+//background color rgb values (used before i set it to a gif)
 let bg = {
 
     r:20,
@@ -52,10 +52,23 @@ let enemies = [];
 
 let enemyImg;
 
+let gunshot;
+
+let bgSong;
+
+//counter to avoid the music playing more than once
+let soundCounter = 1;
+
 function preload() {
+
+    //image loading
     newBg = loadImage('assets/images/pinkbg.gif');
     player.pic = loadImage('assets/images/heartbow1.png');
     enemyImg = loadImage('assets/images/enemy.png');
+
+    //sound loading
+    gunshot = loadSound('assets/sounds/pewpew.mp3');
+    bgSong = loadSound('assets/sounds/nightshade.mp3')
 }
 
 
@@ -63,7 +76,7 @@ function preload() {
 function setup() {
 
 createCanvas(600,600);
-
+userStartAudio();
 //spawn enemies
 for(let i = 0; i < 10; i++){
 
@@ -84,6 +97,7 @@ function draw() {
 //setting the background color
 //background(bg.r, bg.g, bg.b);
 background(newBg);
+
 
 rectMode(CENTER);
 
@@ -159,4 +173,19 @@ function mousePressed(){
     }
     //as a bullet gets created, we add it to our array of bullets from earlier
 bullets.push(bullet);
+
+if(soundCounter === 1){
+
+    bgSong.loop();
+    bgSong.setVolume(0.25);
+    soundCounter+=1;
+}
+
+
+if(state === 'simulation'){
+
+    gunshot.play();
+    
+
+}
 }
