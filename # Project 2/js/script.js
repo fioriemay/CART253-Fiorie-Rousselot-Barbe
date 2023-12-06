@@ -10,7 +10,7 @@
 
 //states: title, gameplay, end
 // (we start at the title screen)
-let state = 'simulation';
+let state = 'title';
 
 
 //background color rgb values (used before i set it to a gif)
@@ -76,7 +76,9 @@ function preload() {
     enemyImg = loadImage('assets/images/enemy.png');
     heartBullet = loadImage('assets/images/heartbullet.png');
     heartCursor = loadImage('assets/images/newcursor.png');
-    titlePage = createVideo('assets/images/titlescr.mp4');
+    titlePage = loadImage('assets/images/titlescr.gif');
+    
+    
 
     //sound loading
     gunshot = loadSound('assets/sounds/pewpew.mp3');
@@ -110,6 +112,22 @@ for(let i = 0; i < 10; i++){
 
 
 function draw() {
+    if(state === 'title'){
+
+        title();
+
+    }
+
+    else if (state === 'simulation'){
+
+        simulation();
+
+    }
+}
+
+// ------- END OF DRAW FUNCTION --------
+
+function simulation(){
 //setting the background color
 //background(bg.r, bg.g, bg.b);
 background(newBg);
@@ -189,11 +207,16 @@ for(let enemy of enemies){
     text('Score:'+gameScore, 13.5, 29);
     pop();
 }
+
+
 }
 
-// ------- END OF DRAW FUNCTION --------
+// ---- END OF SIMULATION FUNCTION -----
+function title(){
 
-
+    image(titlePage,0,0);
+    
+}
 function mousePressed(){
 
     //creating bullets everytime the player clicks on the left mouse button
@@ -210,11 +233,16 @@ bullets.push(bullet);
 //using this so my sound does not play overlapping every time the user presses the mouse button.
 if(soundCounter === 1){
 
-   // bgSong.loop();
-   // bgSong.setVolume(0.25);
-   // soundCounter+=1;
+   bgSong.loop();
+   bgSong.setVolume(0.25);
+   soundCounter+=1;
 }
 
+if(state === 'title'){
+
+    state = 'simulation';
+
+}
 
 if(state === 'simulation'){
 
