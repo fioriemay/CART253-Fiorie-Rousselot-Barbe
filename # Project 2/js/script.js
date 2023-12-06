@@ -59,22 +59,38 @@ let bgSong;
 //counter to avoid the music playing more than once
 let soundCounter = 1;
 
+//loading a font
+let coutureFont;
+
+let heartBullet;
+
+let heartCursor;
+
+let titlePage;
+
 function preload() {
 
     //image loading
     newBg = loadImage('assets/images/pinkbg.gif');
     player.pic = loadImage('assets/images/heartbow1.png');
     enemyImg = loadImage('assets/images/enemy.png');
+    heartBullet = loadImage('assets/images/heartbullet.png');
+    heartCursor = loadImage('assets/images/newcursor.png');
+    titlePage = createVideo('assets/images/titlescr.mp4');
 
     //sound loading
     gunshot = loadSound('assets/sounds/pewpew.mp3');
     bgSong = loadSound('assets/sounds/nightshade.mp3')
+
+    //font loading
+    coutureFont = loadFont('assets/fonts/couture.otf');
 }
 
 
 
 function setup() {
 
+//set up the audio and canvas
 createCanvas(600,600);
 userStartAudio();
 //spawn enemies
@@ -99,6 +115,10 @@ function draw() {
 background(newBg);
 
 
+//custom-made cursor
+cursor('assets/images/newcursor.png',10, 10);
+
+
 rectMode(CENTER);
 
 //used this to locate coordinates easier
@@ -115,7 +135,7 @@ image(player.pic, mouseX-75, player.y);
 for(let bullet of bullets){
 
     fill(201, 95, 139);
-    ellipse(bullet.x, bullet.y, 15);
+    image(heartBullet, bullet.x, bullet.y, 20, 20);
     //moving the bullet upwards
     bullet.y -=6;
 }
@@ -133,7 +153,7 @@ for(let enemy of enemies){
 push();
 fill (227, 73, 145);
 noStroke();
-rect(30, 20, 55, 55, 20);
+rect(39, 25, 68, 35, 10);
 pop();
 //nested loop, checking enemies and bullets
 for(let enemy of enemies){
@@ -160,8 +180,14 @@ for(let enemy of enemies){
 
     }
 
-    //text to be edited
-    //text(gameScore, 25, 25);
+    //text displaying the player's score
+    push();
+    fill(0);
+    textStyle(BOLD);
+    //used loaded font: Couture
+    textFont(coutureFont);
+    text('Score:'+gameScore, 13.5, 29);
+    pop();
 }
 }
 
