@@ -83,7 +83,7 @@ for(let i = 0; i < 10; i++){
     enemy = {
 
         x:random(0, width),
-        y:random(-90, 30),
+        y:random(-190, -20),
 
     }
     enemies.push(enemy);
@@ -129,6 +129,12 @@ for(let enemy of enemies){
 
 }
 
+//background rectangle to put under player score for better visibility
+push();
+fill (227, 73, 145);
+noStroke();
+rect(30, 20, 55, 55, 20);
+pop();
 //nested loop, checking enemies and bullets
 for(let enemy of enemies){
 
@@ -143,7 +149,7 @@ for(let enemy of enemies){
             let respawnEnemy = {
 
                 x:random(0, width),
-                y:random(-90, 30),
+                y:random(-190, -20),
         
             }
             enemies.push(respawnEnemy);
@@ -154,7 +160,8 @@ for(let enemy of enemies){
 
     }
 
-    text(gameScore, 25, 25);
+    //text to be edited
+    //text(gameScore, 25, 25);
 }
 }
 
@@ -174,11 +181,12 @@ function mousePressed(){
     //as a bullet gets created, we add it to our array of bullets from earlier
 bullets.push(bullet);
 
+//using this so my sound does not play overlapping every time the user presses the mouse button.
 if(soundCounter === 1){
 
-    bgSong.loop();
-    bgSong.setVolume(0.25);
-    soundCounter+=1;
+   // bgSong.loop();
+   // bgSong.setVolume(0.25);
+   // soundCounter+=1;
 }
 
 
